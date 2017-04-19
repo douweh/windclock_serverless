@@ -116,11 +116,11 @@ function getAndPushWeatherData(station){
       if (station.toUpperCase() == rowStation.toUpperCase()) {
 
         // then get the winddirection from the 6th cell (index 5)
-        let dutchDirection = $(tds[5]).html();
+        let dutchDirection = $(tds[4]).html();
         direction = translateDirection(dutchDirection);
 
         // and get the speed from the 7th cell (index 6)
-        speed = $(tds[6]).html();
+        speed = $(tds[5]).html();
         beaufort  = getBeaufortForMS(speed);
       }
     });
