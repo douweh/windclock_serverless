@@ -65,7 +65,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/windclock/dev/1479998933860-2016-11-24T14:48:53.860Z/windclock.zip"
+          "S3Key": "serverless/windclock/dev/1509264471477-2017-10-29T08:07:51.477Z/windclock.zip"
         },
         "FunctionName": "windclock-dev-update",
         "Handler": "handler.update",
