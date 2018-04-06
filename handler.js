@@ -99,6 +99,7 @@ function getAndPushWeatherData(station){
     let $ = cheerio.load(body);
 
     // Set defaults
+    let dutchDirection = ""
     let direction = "N";
     let speed = "1";
     let beaufort = "1";
@@ -115,12 +116,20 @@ function getAndPushWeatherData(station){
       // If it's the station we're interested in....
       if (station.toUpperCase() == rowStation.toUpperCase()) {
 
-        // then get the winddirection from the 6th cell (index 5)
-        let dutchDirection = $(tds[5]).html();
-        direction = translateDirection(dutchDirection);
+        if (tds.length == 8) {
+          // SUMMERTIME!
+          // then get the winddirection from the 5th cell (index 4)
+          dutchDirection = $(tds[4]).html();
+          // and get the speed from the 6th cell (index 5)
+          speed = $(tds[5]).html();
+        } else {
+          // then get the winddirection from the 6th cell (index 5)
+          dutchDirection = $(tds[5]).html();
+          // and get the speed from the 7th cell (index 6)
+          speed = $(tds[6]).html();
+        }
 
-        // and get the speed from the 7th cell (index 6)
-        speed = $(tds[6]).html();
+        direction = translateDirection(dutchDirection);
         beaufort  = getBeaufortForMS(speed);
       }
     });
